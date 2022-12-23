@@ -17,6 +17,9 @@ namespace TicTacToe {
 		//dodanie stanu przycisku
 		bool wcisniety = true;
 		bool wygral = false;
+		int licznikX = 0;
+		int licznikO = 0;
+		String^ mistrz =" ";
 		 
 	public:
 		Gra(void)
@@ -118,6 +121,7 @@ namespace TicTacToe {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Reset";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Gra::button1_Click);
 			// 
 			// label1
 			// 
@@ -369,13 +373,47 @@ namespace TicTacToe {
 				   {
 					   if (element->GetType()==PictureBox::typeid) element->Enabled = false; // warunek blokowania tylko obrazkow 
 				   }
+				   if (wcisniety) {
+						licznikO++;
+						lblLicznikO->Text = (Convert::ToString(licznikO));
+						mistrz = "O";
+				   }
+				   else {
+						licznikX++;
+						lblLicznikX->Text = (Convert::ToString(licznikX));
+						mistrz = "X";
 
-
-				   MessageBox::Show("Wygrana", "Tic Tac Toe", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+				   }
+				   
+				   MessageBox::Show("Wygrana "+mistrz, "Tic Tac Toe", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 			   }
 		   }
+	private: Void startowa()
+	{
+		for each (Control ^ element in this->Controls)
+		{
+			try {
+				PictureBox^ zdjecie = (PictureBox^)element;
+				zdjecie->Enabled = true;
+				zdjecie->Tag = "?";
+				zdjecie->Image = imageList1->Images[2];
+			}
+			catch (...)
+			{
+			}
+		}
+	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+	wygral = false;
+	startowa();
+	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	wygral = false;
+	startowa();
+	licznikO = 0;
+	licznikX = 0;
+	lblLicznikO->Text = "0";
+	lblLicznikX->Text = "0";
 }
 };
 }
