@@ -14,6 +14,10 @@ namespace TicTacToe {
 	/// </summary>
 	public ref class Gra : public System::Windows::Forms::Form
 	{
+		//dodanie stanu przycisku
+		bool wcisniety = true;
+		bool wygral = false;
+		 
 	public:
 		Gra(void)
 		{
@@ -41,15 +45,24 @@ namespace TicTacToe {
 	private: System::Windows::Forms::Label^ lblLicznikX;
 	private: System::Windows::Forms::Label^ lblLicznikO;
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
-	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::PictureBox^ pictureBox4;
-	private: System::Windows::Forms::PictureBox^ pictureBox5;
-	private: System::Windows::Forms::PictureBox^ pictureBox6;
-	private: System::Windows::Forms::PictureBox^ pictureBox7;
-	private: System::Windows::Forms::PictureBox^ pictureBox8;
-	private: System::Windows::Forms::PictureBox^ pictureBox9;
+	private: System::Windows::Forms::PictureBox^ A1;
+	private: System::Windows::Forms::PictureBox^ B1;
+	private: System::Windows::Forms::PictureBox^ C1;
+	private: System::Windows::Forms::PictureBox^ A2;
+	private: System::Windows::Forms::PictureBox^ B2;
+	private: System::Windows::Forms::PictureBox^ C2;
+	private: System::Windows::Forms::PictureBox^ A3;
+	private: System::Windows::Forms::PictureBox^ B3;
+	private: System::Windows::Forms::PictureBox^ C3;
+
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::ImageList^ imageList1;
 	private: System::ComponentModel::IContainer^ components;
 
@@ -74,32 +87,34 @@ namespace TicTacToe {
 			this->lblLicznikX = (gcnew System::Windows::Forms::Label());
 			this->lblLicznikO = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
+			this->A1 = (gcnew System::Windows::Forms::PictureBox());
+			this->B1 = (gcnew System::Windows::Forms::PictureBox());
+			this->C1 = (gcnew System::Windows::Forms::PictureBox());
+			this->A2 = (gcnew System::Windows::Forms::PictureBox());
+			this->B2 = (gcnew System::Windows::Forms::PictureBox());
+			this->C2 = (gcnew System::Windows::Forms::PictureBox());
+			this->A3 = (gcnew System::Windows::Forms::PictureBox());
+			this->B3 = (gcnew System::Windows::Forms::PictureBox());
+			this->C3 = (gcnew System::Windows::Forms::PictureBox());
 			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 475);
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button1->Location = System::Drawing::Point(12, 429);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(141, 42);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Reset";
 			this->button1->UseVisualStyleBackColor = true;
@@ -151,102 +166,124 @@ namespace TicTacToe {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(297, 475);
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button2->Location = System::Drawing::Point(258, 429);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(141, 42);
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Nowa Gra";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Gra::button2_Click);
 			// 
-			// pictureBox1
+			// A1
 			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(26, 75);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(95, 95);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox1->TabIndex = 6;
-			this->pictureBox1->TabStop = false;
+			this->A1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"A1.Image")));
+			this->A1->Location = System::Drawing::Point(26, 75);
+			this->A1->Name = L"A1";
+			this->A1->Size = System::Drawing::Size(95, 95);
+			this->A1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->A1->TabIndex = 6;
+			this->A1->TabStop = false;
+			this->A1->Tag = L"\?";
+			this->A1->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox2
+			// B1
 			// 
-			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(153, 75);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(95, 95);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox2->TabIndex = 7;
-			this->pictureBox2->TabStop = false;
+			this->B1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B1.Image")));
+			this->B1->Location = System::Drawing::Point(153, 75);
+			this->B1->Name = L"B1";
+			this->B1->Size = System::Drawing::Size(95, 95);
+			this->B1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->B1->TabIndex = 7;
+			this->B1->TabStop = false;
+			this->B1->Tag = L"\?";
+			this->B1->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox3
+			// C1
 			// 
-			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(277, 75);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(95, 95);
-			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox3->TabIndex = 8;
-			this->pictureBox3->TabStop = false;
+			this->C1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"C1.Image")));
+			this->C1->Location = System::Drawing::Point(277, 75);
+			this->C1->Name = L"C1";
+			this->C1->Size = System::Drawing::Size(95, 95);
+			this->C1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->C1->TabIndex = 8;
+			this->C1->TabStop = false;
+			this->C1->Tag = L"\?";
+			this->C1->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox4
+			// A2
 			// 
-			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(26, 193);
-			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(95, 95);
-			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox4->TabIndex = 9;
-			this->pictureBox4->TabStop = false;
+			this->A2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->A2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"A2.Image")));
+			this->A2->Location = System::Drawing::Point(26, 193);
+			this->A2->Name = L"A2";
+			this->A2->Size = System::Drawing::Size(95, 95);
+			this->A2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->A2->TabIndex = 9;
+			this->A2->TabStop = false;
+			this->A2->Tag = L"\?";
+			this->A2->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox5
+			// B2
 			// 
-			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(157, 194);
-			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(95, 95);
-			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox5->TabIndex = 10;
-			this->pictureBox5->TabStop = false;
+			this->B2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B2.Image")));
+			this->B2->Location = System::Drawing::Point(157, 194);
+			this->B2->Name = L"B2";
+			this->B2->Size = System::Drawing::Size(95, 95);
+			this->B2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->B2->TabIndex = 10;
+			this->B2->TabStop = false;
+			this->B2->Tag = L"\?";
+			this->B2->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox6
+			// C2
 			// 
-			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
-			this->pictureBox6->Location = System::Drawing::Point(277, 194);
-			this->pictureBox6->Name = L"pictureBox6";
-			this->pictureBox6->Size = System::Drawing::Size(95, 95);
-			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox6->TabIndex = 11;
-			this->pictureBox6->TabStop = false;
+			this->C2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"C2.Image")));
+			this->C2->Location = System::Drawing::Point(277, 194);
+			this->C2->Name = L"C2";
+			this->C2->Size = System::Drawing::Size(95, 95);
+			this->C2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->C2->TabIndex = 11;
+			this->C2->TabStop = false;
+			this->C2->Tag = L"\?";
+			this->C2->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox7
+			// A3
 			// 
-			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(26, 307);
-			this->pictureBox7->Name = L"pictureBox7";
-			this->pictureBox7->Size = System::Drawing::Size(95, 95);
-			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox7->TabIndex = 12;
-			this->pictureBox7->TabStop = false;
+			this->A3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"A3.Image")));
+			this->A3->Location = System::Drawing::Point(26, 307);
+			this->A3->Name = L"A3";
+			this->A3->Size = System::Drawing::Size(95, 95);
+			this->A3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->A3->TabIndex = 12;
+			this->A3->TabStop = false;
+			this->A3->Tag = L"\?";
+			this->A3->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox8
+			// B3
 			// 
-			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
-			this->pictureBox8->Location = System::Drawing::Point(153, 307);
-			this->pictureBox8->Name = L"pictureBox8";
-			this->pictureBox8->Size = System::Drawing::Size(95, 95);
-			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox8->TabIndex = 13;
-			this->pictureBox8->TabStop = false;
+			this->B3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B3.Image")));
+			this->B3->Location = System::Drawing::Point(153, 307);
+			this->B3->Name = L"B3";
+			this->B3->Size = System::Drawing::Size(95, 95);
+			this->B3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->B3->TabIndex = 13;
+			this->B3->TabStop = false;
+			this->B3->Tag = L"\?";
+			this->B3->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
-			// pictureBox9
+			// C3
 			// 
-			this->pictureBox9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.Image")));
-			this->pictureBox9->Location = System::Drawing::Point(277, 307);
-			this->pictureBox9->Name = L"pictureBox9";
-			this->pictureBox9->Size = System::Drawing::Size(95, 95);
-			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox9->TabIndex = 14;
-			this->pictureBox9->TabStop = false;
+			this->C3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"C3.Image")));
+			this->C3->Location = System::Drawing::Point(277, 307);
+			this->C3->Name = L"C3";
+			this->C3->Size = System::Drawing::Size(95, 95);
+			this->C3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->C3->TabIndex = 14;
+			this->C3->TabStop = false;
+			this->C3->Tag = L"\?";
+			this->C3->Click += gcnew System::EventHandler(this, &Gra::graj);
 			// 
 			// imageList1
 			// 
@@ -263,15 +300,15 @@ namespace TicTacToe {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->ClientSize = System::Drawing::Size(411, 483);
-			this->Controls->Add(this->pictureBox9);
-			this->Controls->Add(this->pictureBox8);
-			this->Controls->Add(this->pictureBox7);
-			this->Controls->Add(this->pictureBox6);
-			this->Controls->Add(this->pictureBox5);
-			this->Controls->Add(this->pictureBox4);
-			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->C3);
+			this->Controls->Add(this->B3);
+			this->Controls->Add(this->A3);
+			this->Controls->Add(this->C2);
+			this->Controls->Add(this->B2);
+			this->Controls->Add(this->A2);
+			this->Controls->Add(this->C1);
+			this->Controls->Add(this->B1);
+			this->Controls->Add(this->A1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->lblLicznikO);
 			this->Controls->Add(this->lblLicznikX);
@@ -281,19 +318,64 @@ namespace TicTacToe {
 			this->DoubleBuffered = true;
 			this->Name = L"Gra";
 			this->Text = L"Gra";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void graj(System::Object^ sender, System::EventArgs^ e) {
+		PictureBox^ zdjecie = (PictureBox^)sender; // wybor zdjecia z picture boxa na podstawie kliknietego przycisku
+
+		if (wcisniety) {
+			zdjecie->Image = imageList1->Images[1]; // zamiana na X
+			zdjecie->Tag = "X"; // zmiana tagu na X
+		}
+		else {
+			zdjecie->Image = imageList1->Images[0]; // zamiana na O
+			zdjecie->Tag = "O"; // zmiana tagu na O
+		}
+		wcisniety = !wcisniety; //zmiana stanu
+		zdjecie->Enabled = (false); // zablokownaie przycisku po kliknieciu
+		wygrana();
+
+
+
+	}
+		   private: Void wygrana()
+		   {	
+			   //sprawdzenie wygranej w poziomie
+			   if ((A1->Tag == B1->Tag) && (B1->Tag == C1->Tag) && (A1->Tag != "?")) wygral = true;
+			   if ((A2->Tag == B2->Tag) && (B2->Tag == C2->Tag) && (A2->Tag != "?")) wygral = true;
+			   if ((A3->Tag == B3->Tag) && (B3->Tag == C3->Tag) && (A3->Tag != "?")) wygral = true;
+			   //sprawdzenie wygranej w pionie
+			   if ((A1->Tag == A2->Tag) && (A2->Tag == A3->Tag) && (A1->Tag != "?")) wygral = true;
+			   if ((B1->Tag == B2->Tag) && (B2->Tag == B3->Tag) && (B1->Tag != "?")) wygral = true;
+			   if ((C1->Tag == C2->Tag) && (C2->Tag == C3->Tag) && (C1->Tag != "?")) wygral = true;
+			   //sprawdzenie wygranej po przekatnej
+			   if ((A1->Tag == B2->Tag) && (B2->Tag == C3->Tag) && (A1->Tag != "?")) wygral = true;
+			   if ((C1->Tag == B2->Tag) && (B2->Tag == A3->Tag) && (C1->Tag != "?")) wygral = true;
+			   //dodanie msg box gdy ktos wygral
+			   if (wygral) {
+				   for each (Control^ element in this->Controls)  //blokowanie wszystkich elementow
+				   {
+					   if (element->GetType()==PictureBox::typeid) element->Enabled = false; // warunek blokowania tylko obrazkow 
+				   }
+
+
+				   MessageBox::Show("Wygrana", "Tic Tac Toe", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+			   }
+		   }
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+}
+};
 }
